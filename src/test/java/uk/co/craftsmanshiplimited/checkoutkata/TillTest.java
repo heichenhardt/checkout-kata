@@ -23,4 +23,11 @@ public class TillTest {
         this.till.scan("A");
         assertEquals(50, till.getSum());
     }
+
+    @Test
+    public void shouldScanTwoItems() throws Exception {
+        this.till.scan("A");
+        this.till.scan("B");
+        assertEquals(80, till.getSum());
+    }
 }

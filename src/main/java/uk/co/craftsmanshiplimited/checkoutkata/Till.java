@@ -7,8 +7,12 @@ public class Till {
 
     private int sum;
 
-    public void scan(String a) {
-        sum += 50;
+    public void scan(String stockKeepkingUnit) {
+        if(stockKeepkingUnit.equals("A")) {
+            sum += 50;
+        } else if (stockKeepkingUnit.equals("B")){
+            sum += 30;
+        }
     }
 
     public int getSum() {
