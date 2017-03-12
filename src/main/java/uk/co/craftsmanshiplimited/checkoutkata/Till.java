@@ -43,8 +43,11 @@ public class Till {
 
     private int calculatePrice(final Map.Entry<String, Long> entry) {
         final String stockKeepkingUnit = entry.getKey();
+        int count = entry.getValue().intValue();
         if(stockKeepkingUnit.equals("A")) {
-            return 50;
+            int multiBuy = count / 3;
+            int nonMultiBuy = count % 3;
+            return multiBuy * 130 + nonMultiBuy * 50;
         } else if (stockKeepkingUnit.equals("B")){
             return 30;
         } else if (stockKeepkingUnit.equals("C")){
