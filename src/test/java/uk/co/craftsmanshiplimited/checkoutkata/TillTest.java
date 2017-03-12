@@ -50,11 +50,19 @@ public class TillTest {
     }
 
     @Test
-    public void shouldCalculatePriceForMultiBuys() throws Exception {
+    public void shouldCalculatePriceForMultiBuysA() throws Exception {
         till.scan("A");
+        assertEquals(50, till.getSum());
         till.scan("A");
+        assertEquals(100, till.getSum());
         till.scan("A");
         assertEquals(130, till.getSum());
+        till.scan("A");
+        assertEquals(180, till.getSum());
+        till.scan("A");
+        assertEquals(230, till.getSum());
+        till.scan("A");
+        assertEquals(260, till.getSum());
     }
 
 }
