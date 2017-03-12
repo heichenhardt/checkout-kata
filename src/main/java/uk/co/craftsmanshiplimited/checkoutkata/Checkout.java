@@ -11,20 +11,20 @@ import static uk.co.craftsmanshiplimited.checkoutkata.Checkout.ScannerResponse.O
  */
 public class Checkout {
 
-    private final Map<String, PricingRule> pricingStrategy;
+    private final PricingStrategy pricingStrategy;
     private final List<String> items;
 
     enum ScannerResponse {
         OK, ERROR
     }
 
-    public Checkout(final Map<String, PricingRule> pricingStrategy) {
+    public Checkout(final PricingStrategy pricingStrategy) {
         this.items = new LinkedList<String>();
         this.pricingStrategy = pricingStrategy;
     }
 
     public ScannerResponse scan(final String stockKeepkingUnit) {
-        if(pricingStrategy.get(stockKeepkingUnit) != null) {
+        if(pricingStrategy.contains(stockKeepkingUnit)) {
             this.items.add(stockKeepkingUnit);
             return OK;
         }
@@ -32,19 +32,6 @@ public class Checkout {
     }
 
     public int getTotalPrice() {
-        final Map<String, Long> productToCount =
-                items.stream().collect(Collectors.groupingBy(x -> x, Collectors.counting()));
-
-        return productToCount.entrySet().stream().mapToInt(this::calculatePrice).sum();
-    }
-
-    private int calculatePrice(final Map.Entry<String, Long> entry) {
-        final String stockKeepingUnit = entry.getKey();
-        int count = entry.getValue().intValue();
-        if(pricingStrategy.get(stockKeepingUnit) != null) {
-            return pricingStrategy.get(stockKeepingUnit).getPrice(count);
-        } else {
-            throw new IllegalArgumentException("Unknown product in basket");
-        }
+        return this.pricingStrategy.getTotalPrice(items);
     }
 }
