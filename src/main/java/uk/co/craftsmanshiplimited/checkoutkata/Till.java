@@ -49,11 +49,13 @@ public class Till {
             int nonMultiBuy = count % 3;
             return multiBuy * 130 + nonMultiBuy * 50;
         } else if (stockKeepkingUnit.equals("B")){
-            return 30;
+            int multiBuy = count / 2;
+            int nonMultiBuy = count % 2;
+            return multiBuy * 45 + nonMultiBuy * 30;
         } else if (stockKeepkingUnit.equals("C")){
-            return 20;
+            return count * 20;
         } else if (stockKeepkingUnit.equals("D")){
-            return 15;
+            return count * 15;
         } else {
             throw new IllegalArgumentException("Unknown product in basket");
         }

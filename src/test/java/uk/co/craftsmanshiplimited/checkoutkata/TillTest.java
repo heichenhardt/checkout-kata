@@ -65,4 +65,42 @@ public class TillTest {
         assertEquals(260, till.getSum());
     }
 
+    @Test
+    public void shouldCalculatePriceForMultiBuysB() throws Exception {
+        till.scan("B");
+        assertEquals(30, till.getSum());
+        till.scan("B");
+        assertEquals(45, till.getSum());
+        till.scan("B");
+        assertEquals(75, till.getSum());
+        till.scan("B");
+        assertEquals(90, till.getSum());
+        till.scan("B");
+        assertEquals(120, till.getSum());
+    }
+
+    @Test
+    public void shouldCalculatePriceForMultiBuysC() throws Exception {
+        till.scan("C");
+        assertEquals(20, till.getSum());
+        till.scan("C");
+        assertEquals(40, till.getSum());
+        till.scan("C");
+        assertEquals(60, till.getSum());
+        till.scan("C");
+        assertEquals(80, till.getSum());
+    }
+
+    @Test
+    public void shouldCalculatePriceForMultiBuysD() throws Exception {
+        till.scan("D");
+        assertEquals(15, till.getSum());
+        till.scan("D");
+        assertEquals(30, till.getSum());
+        till.scan("D");
+        assertEquals(45, till.getSum());
+        till.scan("D");
+        assertEquals(60, till.getSum());
+    }
+
 }
