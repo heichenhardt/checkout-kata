@@ -1,21 +1,16 @@
 package uk.co.craftsmanshiplimited.checkoutkata;
 
 
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.ArgumentCaptor;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import java.util.Arrays;
-import java.util.List;
 
 import static org.junit.Assert.assertEquals;
-import static org.mockito.Matchers.anyList;
 import static org.mockito.Matchers.eq;
-import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 import static uk.co.craftsmanshiplimited.checkoutkata.Checkout.ScannerResponse.ERROR;
 import static uk.co.craftsmanshiplimited.checkoutkata.Checkout.ScannerResponse.OK;

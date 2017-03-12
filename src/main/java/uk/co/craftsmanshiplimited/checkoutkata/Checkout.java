@@ -1,7 +1,6 @@
 package uk.co.craftsmanshiplimited.checkoutkata;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 import static uk.co.craftsmanshiplimited.checkoutkata.Checkout.ScannerResponse.ERROR;
 import static uk.co.craftsmanshiplimited.checkoutkata.Checkout.ScannerResponse.OK;
