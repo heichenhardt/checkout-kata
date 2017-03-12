@@ -13,7 +13,6 @@ public class Checkout {
 
     private final Map<String, PricingRule> pricingStrategy;
     private List<String> items;
-    private Set<String> availableInInventory;
 
     enum ScannerResponse {
         OK, ERROR
@@ -21,7 +20,6 @@ public class Checkout {
 
     public Checkout() {
         this.items = new LinkedList<String>();
-        this.availableInInventory = new HashSet<String>(Arrays.asList("A", "B", "C", "D"));
         this.pricingStrategy = new HashMap<>();
         this.pricingStrategy.put("A", new PricingRule("A", 50, 130, 3));
         this.pricingStrategy.put("B", new PricingRule("B", 30, 45, 2));
@@ -30,7 +28,7 @@ public class Checkout {
     }
 
     public ScannerResponse scan(final String stockKeepkingUnit) {
-        if(availableInInventory.contains(stockKeepkingUnit)) {
+        if(pricingStrategy.get(stockKeepkingUnit) != null) {
             this.items.add(stockKeepkingUnit);
             return OK;
         }
