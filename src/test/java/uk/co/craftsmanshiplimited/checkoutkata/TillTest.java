@@ -40,4 +40,13 @@ public class TillTest {
         assertEquals(50, till.getSum());
     }
 
+    @Test
+    public void shouldAllItemInInventory() throws Exception {
+        assertEquals(OK, till.scan("A"));
+        assertEquals(OK, till.scan("B"));
+        assertEquals(OK, till.scan("C"));
+        assertEquals(OK, till.scan("D"));
+        assertEquals(115, till.getSum());
+    }
+
 }

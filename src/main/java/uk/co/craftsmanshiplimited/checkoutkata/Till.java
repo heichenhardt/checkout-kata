@@ -21,6 +21,12 @@ public class Till {
         } else if (stockKeepkingUnit.equals("B")){
             sum += 30;
             return OK;
+        } else if (stockKeepkingUnit.equals("C")){
+            sum += 20;
+            return OK;
+        } else if (stockKeepkingUnit.equals("D")){
+            sum += 15;
+            return OK;
         } else {
             return  ERROR;
         }
