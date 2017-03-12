@@ -18,13 +18,9 @@ public class Checkout {
         OK, ERROR
     }
 
-    public Checkout() {
+    public Checkout(final Map<String, PricingRule> pricingStrategy) {
         this.items = new LinkedList<String>();
-        this.pricingStrategy = new HashMap<>();
-        this.pricingStrategy.put("A", new PricingRule("A", 50, 130, 3));
-        this.pricingStrategy.put("B", new PricingRule("B", 30, 45, 2));
-        this.pricingStrategy.put("C", new PricingRule("C", 20, 20, 1));
-        this.pricingStrategy.put("D", new PricingRule("D", 15, 15, 1));
+        this.pricingStrategy = pricingStrategy;
     }
 
     public ScannerResponse scan(final String stockKeepkingUnit) {
@@ -33,7 +29,6 @@ public class Checkout {
             return OK;
         }
         return ERROR;
-
     }
 
     public int getTotalPrice() {
@@ -44,10 +39,10 @@ public class Checkout {
     }
 
     private int calculatePrice(final Map.Entry<String, Long> entry) {
-        final String stockKeepkingUnit = entry.getKey();
+        final String stockKeepingUnit = entry.getKey();
         int count = entry.getValue().intValue();
-        if(pricingStrategy.get(stockKeepkingUnit) != null) {
-            return pricingStrategy.get(stockKeepkingUnit).getPrice(count);
+        if(pricingStrategy.get(stockKeepingUnit) != null) {
+            return pricingStrategy.get(stockKeepingUnit).getPrice(count);
         } else {
             throw new IllegalArgumentException("Unknown product in basket");
         }

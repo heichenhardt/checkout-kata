@@ -4,6 +4,9 @@ package uk.co.craftsmanshiplimited.checkoutkata;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import static org.junit.Assert.assertEquals;
 import static uk.co.craftsmanshiplimited.checkoutkata.Checkout.ScannerResponse.ERROR;
 import static uk.co.craftsmanshiplimited.checkoutkata.Checkout.ScannerResponse.OK;
@@ -13,11 +16,19 @@ import static uk.co.craftsmanshiplimited.checkoutkata.Checkout.ScannerResponse.O
  */
 public class CheckoutTest {
 
+    private Map<String, PricingRule> pricingStrategy;
+
     private Checkout checkout;
 
     @Before
     public void setup() throws Exception {
-        this.checkout = new Checkout();
+        this.pricingStrategy = new HashMap<>();
+        this.pricingStrategy.put("A", new PricingRule("A", 50, 130, 3));
+        this.pricingStrategy.put("B", new PricingRule("B", 30, 45, 2));
+        this.pricingStrategy.put("C", new PricingRule("C", 20, 20, 1));
+        this.pricingStrategy.put("D", new PricingRule("D", 15, 15, 1));
+
+        this.checkout = new Checkout(pricingStrategy);
     }
 
     @Test
