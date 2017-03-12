@@ -48,13 +48,7 @@ public class Checkout {
     private int calculatePrice(final Map.Entry<String, Long> entry) {
         final String stockKeepkingUnit = entry.getKey();
         int count = entry.getValue().intValue();
-        if(stockKeepkingUnit.equals("A")) {
-            return pricingStrategy.get(stockKeepkingUnit).getPrice(count);
-        } else if (stockKeepkingUnit.equals("B")){
-            return pricingStrategy.get(stockKeepkingUnit).getPrice(count);
-        } else if (stockKeepkingUnit.equals("C")){
-            return pricingStrategy.get(stockKeepkingUnit).getPrice(count);
-        } else if (stockKeepkingUnit.equals("D")){
+        if(pricingStrategy.get(stockKeepkingUnit) != null) {
             return pricingStrategy.get(stockKeepkingUnit).getPrice(count);
         } else {
             throw new IllegalArgumentException("Unknown product in basket");
