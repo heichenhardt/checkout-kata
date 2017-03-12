@@ -114,4 +114,18 @@ public class CheckoutTest {
         assertEquals(60, checkout.getTotalPrice());
     }
 
+    @Test
+    public void shouldCalculatePriceForBasket() throws Exception {
+        checkout.scan("A");
+        checkout.scan("B");
+        checkout.scan("C");
+        checkout.scan("D");
+        checkout.scan("A");
+        checkout.scan("B");
+        checkout.scan("C");
+        checkout.scan("D");
+        assertEquals(215, checkout.getTotalPrice());
+
+    }
+
 }
