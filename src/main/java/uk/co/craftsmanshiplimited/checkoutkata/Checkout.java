@@ -34,7 +34,7 @@ public class Checkout {
 
     }
 
-    public int getSum() {
+    public int getTotalPrice() {
         final Map<String, Long> productToCount =
                 items.stream().collect(Collectors.groupingBy(x -> x, Collectors.counting()));
 
