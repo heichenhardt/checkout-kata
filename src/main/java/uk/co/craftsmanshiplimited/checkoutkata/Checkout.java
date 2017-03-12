@@ -12,7 +12,7 @@ import static uk.co.craftsmanshiplimited.checkoutkata.Checkout.ScannerResponse.O
 public class Checkout {
 
     private final Map<String, PricingRule> pricingStrategy;
-    private List<String> items;
+    private final List<String> items;
 
     enum ScannerResponse {
         OK, ERROR

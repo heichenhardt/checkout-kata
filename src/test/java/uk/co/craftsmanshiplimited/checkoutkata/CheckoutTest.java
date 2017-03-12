@@ -125,7 +125,11 @@ public class CheckoutTest {
         checkout.scan("C");
         checkout.scan("D");
         assertEquals(215, checkout.getTotalPrice());
+    }
 
+    @Test
+    public void shouldCalculatePriceForEmpty() throws Exception {
+        assertEquals(0, checkout.getTotalPrice());
     }
 
 }
