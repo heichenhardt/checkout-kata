@@ -38,10 +38,10 @@ public class Till {
         final Map<String, Long> productToCount =
                 items.stream().collect(Collectors.groupingBy(x -> x, Collectors.counting()));
 
-        return productToCount.entrySet().stream().mapToInt(entry -> calculatePrice(entry)).sum();
+        return productToCount.entrySet().stream().mapToInt(Till::calculatePrice).sum();
     }
 
-    private int calculatePrice(final Map.Entry<String, Long> entry) {
+    private static int calculatePrice(final Map.Entry<String, Long> entry) {
         final String stockKeepkingUnit = entry.getKey();
         int count = entry.getValue().intValue();
         if(stockKeepkingUnit.equals("A")) {
