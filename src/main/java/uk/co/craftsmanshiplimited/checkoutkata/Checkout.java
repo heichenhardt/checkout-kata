@@ -3,13 +3,13 @@ package uk.co.craftsmanshiplimited.checkoutkata;
 import java.util.*;
 import java.util.stream.Collectors;
 
-import static uk.co.craftsmanshiplimited.checkoutkata.Till.ScannerResponse.ERROR;
-import static uk.co.craftsmanshiplimited.checkoutkata.Till.ScannerResponse.OK;
+import static uk.co.craftsmanshiplimited.checkoutkata.Checkout.ScannerResponse.ERROR;
+import static uk.co.craftsmanshiplimited.checkoutkata.Checkout.ScannerResponse.OK;
 
 /**
  * Created by Henrik on 12/03/2017.
  */
-public class Till {
+public class Checkout {
 
     private List<String> items;
     private Set<String> availableInInventory;
@@ -18,7 +18,7 @@ public class Till {
         OK, ERROR
     }
 
-    public Till() {
+    public Checkout() {
         this.items = new LinkedList<String>();
         this.availableInInventory = new HashSet<String>(Arrays.asList("A", "B", "C", "D"));
     }
@@ -38,7 +38,7 @@ public class Till {
         final Map<String, Long> productToCount =
                 items.stream().collect(Collectors.groupingBy(x -> x, Collectors.counting()));
 
-        return productToCount.entrySet().stream().mapToInt(Till::calculatePrice).sum();
+        return productToCount.entrySet().stream().mapToInt(Checkout::calculatePrice).sum();
     }
 
     private static int calculatePrice(final Map.Entry<String, Long> entry) {
